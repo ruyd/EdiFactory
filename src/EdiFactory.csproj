@@ -5,10 +5,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Edi Parser - Health IT Deserializer - .net standard fork from OopFactory Open Source Libraries
 </Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageProjectUrl>https://github.com/ruyd/EdiFactory</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>EdiFactory.png</PackageIcon>
+    <Authors>Ruy Delgado</Authors>
+    <Company>Open Source</Company>
     
   </PropertyGroup>
 
