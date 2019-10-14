@@ -65,11 +65,11 @@ namespace OopFactory.X12.Parsing
                 case "999":
                     return GetSpecification("999-5010");
                 default:
-                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("OopFactory.X12.Specifications.Ansi-{0}-4010Specification.xml", transactionSetCode));
+                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("EdiFactory.Specifications.Ansi-{0}-4010Specification.xml", transactionSetCode));
                     if (specStream != null)
                         return GetSpecification(transactionSetCode + "-4010");
 
-                    specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("OopFactory.X12.Specifications.Ansi-{0}-Specification.xml", transactionSetCode));
+                    specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("EdiFactory.Specifications.Ansi-{0}-Specification.xml", transactionSetCode));
                     if (specStream != null)
                         return GetSpecification(transactionSetCode + "-");
 
@@ -99,7 +99,7 @@ namespace OopFactory.X12.Parsing
             lock (syncObject)
                 if (_4010Specification == null)
                 {
-                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Specifications.Ansi-4010Specification.xml");
+                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactory.Specifications.Ansi-4010Specification.xml");
                     StreamReader reader = new StreamReader(specStream);
                     SegmentSet set = SegmentSet.Deserialize(reader.ReadToEnd());
                     _4010Specification = new Dictionary<string, SegmentSpecification>();
@@ -126,7 +126,7 @@ namespace OopFactory.X12.Parsing
             lock (syncObject)
                 if (_5010Specification == null)
                 {
-                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Specifications.Ansi-5010Specification.xml");
+                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactory.Specifications.Ansi-5010Specification.xml");
                     StreamReader reader = new StreamReader(specStream);
                     SegmentSet set = SegmentSet.Deserialize(reader.ReadToEnd());
                     _5010Specification = new Dictionary<string, SegmentSpecification>();
@@ -162,7 +162,7 @@ namespace OopFactory.X12.Parsing
         {
             return _specifications.GetOrAdd(specKey, key =>
             {
-                Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("OopFactory.X12.Specifications.Ansi-{0}Specification.xml", key));
+                Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("EdiFactory.Specifications.Ansi-{0}Specification.xml", key));
                 return TransactionSpecification.Deserialize(new StreamReader(specStream).ReadToEnd());
             });
         }
