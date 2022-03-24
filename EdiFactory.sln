@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdiFactory", "src\EdiFactor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console1", "Console1\Console1.csproj", "{B77D33CD-C69E-4B16-A1A7-7142F32ECD5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdiFactoryTest", "test\EdiFactoryTest.csproj", "{BB92684E-5642-4AF4-9ED8-821C29FD3D18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B77D33CD-C69E-4B16-A1A7-7142F32ECD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77D33CD-C69E-4B16-A1A7-7142F32ECD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77D33CD-C69E-4B16-A1A7-7142F32ECD5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB92684E-5642-4AF4-9ED8-821C29FD3D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB92684E-5642-4AF4-9ED8-821C29FD3D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB92684E-5642-4AF4-9ED8-821C29FD3D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB92684E-5642-4AF4-9ED8-821C29FD3D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
