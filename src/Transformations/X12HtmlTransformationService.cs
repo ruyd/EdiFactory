@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Xsl;
-using System.IO;
+﻿using System.Xml.Xsl;
 using System.Xml;
 using System.Reflection;
 
@@ -26,7 +21,7 @@ namespace OopFactory.X12.Transformations
             if (_transform == null)
             {
                 _transform = new XslCompiledTransform();
-                _transform.Load(XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Transformations.X12-XML-to-HTML.xslt")));
+                _transform.Load(XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactory.Transformations.X12-XML-to-HTML.xslt")));
             }
             return _transform;
         }
