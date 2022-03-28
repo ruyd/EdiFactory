@@ -11,7 +11,7 @@ namespace OopFactory.X12.Tests.Unit
     {
         public static Stream GetEdi(string resourcePath)
         {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Tests.Unit.Parsing._SampleEdiFiles." + resourcePath);
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Parsing._SampleEdiFiles." + resourcePath);
         }
 
         public static void PrintToFile(this FileStream fs, string content)

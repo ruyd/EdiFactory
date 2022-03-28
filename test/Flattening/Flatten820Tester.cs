@@ -18,7 +18,7 @@ namespace OopFactory.X12.Tests.Unit.Flattening
         [TestMethod]
         public void FlattenUsingXmlDocument()
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Tests.Unit.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
 
             X12Parser parser = new X12Parser();
             Interchange interchange = parser.ParseMultiple(stream).First();
@@ -55,14 +55,14 @@ namespace OopFactory.X12.Tests.Unit.Flattening
         [TestMethod]
         public void FlattenUsingXslt()
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Tests.Unit.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
 
             X12Parser parser = new X12Parser();
             Interchange interchange = parser.ParseMultiple(stream).First();
             string xml = interchange.Serialize();
 
             var transform = new XslCompiledTransform();
-            transform.Load(XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("OopFactory.X12.Tests.Unit.Flattening.820-XML-to-csv.xslt")));
+            transform.Load(XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Flattening.820-XML-to-csv.xslt")));
             var writer = new StringWriter();
 
             transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), writer);

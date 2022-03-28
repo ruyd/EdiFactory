@@ -34,6 +34,12 @@ IEA*0*000000031~";
   GS*HC*901234572000*908887732000*20070816*1615*31*X*004010X096A1~
   GE*0*31~
 IEA*1*000000031~";
+        
+        private const string FunctionGroupSample2 =
+            @"ISA*00*          *00*          *01*9012345720000  *01*9088877320000  *020816*1144*U*00401*000000031*1*T*:~
+GS*HC*901234572000*908887732000*20070816*1615*31*X*004010X096A1~
+GE*0*31~
+IEA*1*000000031~";
 
         private const string TransactionSample1 =
 @"ISA*00*          *00*          *01*9012345720000  *01*9088877320000  *020816*1144*U*00401*000000031*1*T*:~
@@ -108,11 +114,19 @@ IEA*1*000000031~";
         }
 
         [TestMethod]
-        public void FunctionGroupCreationTest()
+        public void FunctionGroupCreationTestWithWhitespace()
         {
             Interchange interchange = CreateSample1WithFunctionGroup();
 
-            Assert.AreEqual(FunctionGroupSample1, interchange.SerializeToX12(true));
+            Assert.AreEqual(FunctionGroupSample1, interchange.SerializeToX12(false));
+        }
+        
+        [TestMethod]
+        public void FunctionGroupCreationTestWithoutWhitespace()
+        {
+            Interchange interchange = CreateSample1WithFunctionGroup();
+
+            Assert.AreEqual(FunctionGroupSample2, interchange.SerializeToX12(true));
         }
 
         [TestMethod]
@@ -235,7 +249,7 @@ IEA*1*000000031~";
             }
             catch (ElementValidationException exc)
             {
-                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator ~. Use a value without delimiters ~ * or :.\r\nParameter name: NM1", exc.Message);
+                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator ~. Use a value without delimiters ~ * or :. (Parameter 'NM1')", exc.Message);
             }
         }
     }
