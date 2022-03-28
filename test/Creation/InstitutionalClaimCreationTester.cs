@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
-using OopFactory.X12;
-using System.Reflection;
 using System.IO;
-using OopFactory.X12.Parsing;
 using OopFactory.X12.Parsing.Model;
 using OopFactory.X12.Parsing.Specification;
 
@@ -36,10 +31,7 @@ IEA*0*000000031~";
 IEA*1*000000031~";
         
         private const string FunctionGroupSample2 =
-            @"ISA*00*          *00*          *01*9012345720000  *01*9088877320000  *020816*1144*U*00401*000000031*1*T*:~
-GS*HC*901234572000*908887732000*20070816*1615*31*X*004010X096A1~
-GE*0*31~
-IEA*1*000000031~";
+            @"ISA*00*          *00*          *01*9012345720000  *01*9088877320000  *020816*1144*U*00401*000000031*1*T*:~GS*HC*901234572000*908887732000*20070816*1615*31*X*004010X096A1~GE*0*31~IEA*1*000000031~";
 
         private const string TransactionSample1 =
 @"ISA*00*          *00*          *01*9012345720000  *01*9088877320000  *020816*1144*U*00401*000000031*1*T*:~
@@ -109,7 +101,7 @@ IEA*1*000000031~";
             }
             catch (ElementValidationException exc) {
                 if (exc.ElementId != "ISA05")
-                    Assert.Fail(string.Format("Exception expected on ISA05, but got exception on {0} instead.", exc.ElementId));
+                    Assert.Fail($"Exception expected on ISA05, but got exception on {exc.ElementId} instead.");
             }
         }
 
@@ -118,7 +110,7 @@ IEA*1*000000031~";
         {
             Interchange interchange = CreateSample1WithFunctionGroup();
 
-            Assert.AreEqual(FunctionGroupSample1, interchange.SerializeToX12(false));
+            Assert.AreEqual(FunctionGroupSample1, interchange.SerializeToX12(true));
         }
         
         [TestMethod]
@@ -126,7 +118,7 @@ IEA*1*000000031~";
         {
             Interchange interchange = CreateSample1WithFunctionGroup();
 
-            Assert.AreEqual(FunctionGroupSample2, interchange.SerializeToX12(true));
+            Assert.AreEqual(FunctionGroupSample2, interchange.SerializeToX12(false));
         }
 
         [TestMethod]
@@ -223,7 +215,7 @@ IEA*1*000000031~";
             }
             catch (ElementValidationException exc)
             {
-                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator.\r\nParameter name: NM1", exc.Message);
+                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator. (Parameter 'NM1')", exc.Message);
             }
         }
 
@@ -236,7 +228,7 @@ IEA*1*000000031~";
             }
             catch (ElementValidationException exc)
             {
-                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator ~.\r\nParameter name: NM1", exc.Message);
+                Assert.AreEqual("Element NM1 cannot contain the value 'AB~CD' with the segment terminator ~. (Parameter 'NM1')", exc.Message);
             }
         }
 
