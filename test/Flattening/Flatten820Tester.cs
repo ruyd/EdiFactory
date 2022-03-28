@@ -12,10 +12,13 @@ using System.Xml.Xsl;
 
 namespace OopFactory.X12.Tests.Unit.Flattening
 {
+    /// <summary>
+    /// Tests in this class have no asserts, so I'm guessing they are test harneses.
+    /// </summary>
     [TestClass]
     public class Flatten820Tester
     {
-        [TestMethod]
+        [TestMethod,Ignore]
         public void FlattenUsingXmlDocument()
         {
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
@@ -52,7 +55,7 @@ namespace OopFactory.X12.Tests.Unit.Flattening
             
         }
 
-        [TestMethod]
+        [TestMethod, Ignore]
         public void FlattenUsingXslt()
         {
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EdiFactoryTest.Parsing._SampleEdiFiles.ORD._820.Example1_MortgageBankers.txt");
