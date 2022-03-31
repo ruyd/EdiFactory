@@ -129,13 +129,13 @@ namespace OopFactory.X12.Parsing.Model
             foreach (var segment in this.Segments.Where(seg=> !TrailerSegmentIds.Contains(seg.SegmentId)))
             {
                 if (addWhitespace)
-                    sb.Append(segment.ToX12String(addWhitespace).Replace("\r\n", "\r\n  "));
+                    sb.Append(segment.ToX12String(addWhitespace).Replace(Environment.NewLine, $"{Environment.NewLine}  "));
                 else
                     sb.Append(segment.ToX12String(addWhitespace));
             }
             if (addWhitespace)
             {
-                sb.Append(SerializeBodyToX12(addWhitespace).Replace("\r\n", "\r\n  "));
+                sb.Append(SerializeBodyToX12(addWhitespace).Replace(Environment.NewLine, $"{Environment.NewLine}  "));
             }
             else
                 sb.Append(SerializeBodyToX12(addWhitespace));
@@ -143,7 +143,7 @@ namespace OopFactory.X12.Parsing.Model
             foreach (var segment in this.Segments.Where(seg => TrailerSegmentIds.Contains(seg.SegmentId)))
             {
                 if (addWhitespace)
-                    sb.Append(segment.ToX12String(addWhitespace).Replace("\r\n", "\r\n  "));
+                    sb.Append(segment.ToX12String(addWhitespace).Replace(Environment.NewLine, $"{Environment.NewLine}  "));
                 else
                     sb.Append(segment.ToX12String(addWhitespace));
             }
@@ -152,7 +152,7 @@ namespace OopFactory.X12.Parsing.Model
             {
                 string[] wrapperSegments = new string[] { "SE", "GE", "IEA" };
                 if (addWhitespace && !wrapperSegments.Contains(segment.SegmentId))
-                    sb.Append(segment.ToX12String(addWhitespace).Replace("\r\n", "\r\n  "));
+                    sb.Append(segment.ToX12String(addWhitespace).Replace(Environment.NewLine, $"{Environment.NewLine}  "));
                 else
                     sb.Append(segment.ToX12String(addWhitespace));
             }
